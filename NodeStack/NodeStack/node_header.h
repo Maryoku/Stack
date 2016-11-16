@@ -6,14 +6,17 @@
 #include <iostream>
 #include <ctime>
 
-typedef struct Node_tag
+#define SUCCESS 2147483647
+#define ERROR -2147483647
+
+typedef struct Node
 {
 	int elem;
-	struct Node_tag *next;
-}Node;
+	Node *next;
+};
 
-bool IsEmptyNode(Node *head);
-bool PushNode(Node **head, int elem);
+int IsEmptyNode(Node *head);
+int PushNode(Node **head, int elem);
 int TopNode(Node *head);
 int PopNode(Node **head);
 
