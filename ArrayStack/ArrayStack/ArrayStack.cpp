@@ -8,30 +8,30 @@ void initArrayStack(ArrayStack *stack) {
 
 int PushArray(ArrayStack *stack, int elem) {
 	// Если стек переполнен
-	if (IsFullArray(stack) == SUCCESS)
+	if (IsFullArray(stack))
 	{
-		return ERROR;
+		return 0;
 	}
 	else
 	{
 		stack->arr[stack->pointer] = elem;       // Включение элемента
 		stack->pointer++;                       // Сдвиг указателя (номера элемента массива)
-		return SUCCESS;
+		return 1;
 	}
 }
 
 int TopArray(ArrayStack *stack) {
 	// Если стек пуст
-	if (IsEmptyArray(stack) == SUCCESS)
-		return ERROR;
+	if (IsEmptyArray(stack))
+		return 0;
 	else
 		return stack->arr[stack->pointer - 1];
 }
 
 int PopArray(ArrayStack *stack) {
 	// Если стек пуст
-	if (IsEmptyArray(stack) == SUCCESS) {
-		return ERROR;
+	if (IsEmptyArray(stack)) {
+		return 0;
 	}
 	else {
 		int tmp = stack->arr[stack->pointer - 1];
@@ -42,17 +42,17 @@ int PopArray(ArrayStack *stack) {
 
 }
 
-int IsEmptyArray(ArrayStack *stack) {
-	if ((stack->pointer == 0) && (stack->arr[stack->pointer] == NULL))
-		return SUCCESS;
+bool IsEmptyArray(ArrayStack *stack) {
+	if (stack->pointer == 0)
+		return 1;
 	else
-		return ERROR;
+		return 0;
 }
 
-int IsFullArray(ArrayStack *stack) {
+bool IsFullArray(ArrayStack *stack) {
 	// Если стек заполнен
 	if (stack->pointer == (SIZE - 1)) //max size - 1
-		return SUCCESS;
+		return 1;
 	else
-		return ERROR;
+		return 0;
 }

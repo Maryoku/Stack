@@ -4,7 +4,6 @@
 #pragma warning (disable: 4996)
 #include <stdio.h>
 #include <iostream>
-#include <ctime>
 
 #define SUCCESS 2147483647
 #define ERROR -2147483646
@@ -23,7 +22,7 @@ void initArrayStack(ArrayStack *stack);
 int PushArray(ArrayStack *stack, int elem);
 int TopArray(ArrayStack *stack);
 int PopArray(ArrayStack *stack);
-int IsEmptyArray(ArrayStack *stack);
-int IsFullArray(ArrayStack *stack);
+bool IsEmptyArray(ArrayStack *stack);
+bool IsFullArray(ArrayStack *stack);
 
 #endif
