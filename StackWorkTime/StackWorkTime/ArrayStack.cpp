@@ -6,11 +6,11 @@ void initArrayStack(ArrayStack *stack) {
 	stack->arr[stack->pointer] = NULL;
 }
 
-bool PushArray(ArrayStack *stack, int elem) {
+int PushArray(ArrayStack *stack, int elem) {
 	// Если стек переполнен
 	if (IsFullArray(stack))
 	{
-		return ERROR;
+		return 0;
 	}
 	else
 	{
@@ -35,7 +35,7 @@ int PopArray(ArrayStack *stack) {
 	}
 	else {
 		int tmp = stack->arr[stack->pointer - 1];
-		stack->arr[stack->pointer - 1] = 0;
+		stack->arr[stack->pointer - 1] = SUCCESS;
 		stack->pointer--;
 		return tmp;
 	}
@@ -43,7 +43,7 @@ int PopArray(ArrayStack *stack) {
 }
 
 bool IsEmptyArray(ArrayStack *stack) {
-	if ((stack->pointer == 0) && (stack->arr[stack->pointer] == NULL))
+	if (stack->pointer == 0)
 		return 1;
 	else
 		return 0;
@@ -51,7 +51,7 @@ bool IsEmptyArray(ArrayStack *stack) {
 
 bool IsFullArray(ArrayStack *stack) {
 	// Если стек заполнен
-	if (stack->pointer == 99999)
+	if (stack->pointer == (SIZE - 1)) //max size - 1
 		return 1;
 	else
 		return 0;
