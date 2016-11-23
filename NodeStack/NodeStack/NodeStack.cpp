@@ -1,32 +1,32 @@
 #include "node_header.h"
 
-int IsEmptyNode(Node *head)
+bool IsEmptyNode(Node* &head)
 {
 	if (head == NULL)
 	{
-		return SUCCESS;
+		return 1;
 	}
 	else
 	{
-		return ERROR;
+		return 0;
 	}
 }
 
-int PushNode(Node **head, int elem)
+int PushNode(Node* &head, int elem)
 {
 	Node *tmp = new Node;
-	if (tmp == NULL) return ERROR;
-	tmp->next = *head;
+	if (tmp == NULL) return 0;
+	tmp->next = head;
 	tmp->elem = elem;
-	*head = tmp;
-	return SUCCESS;
+	head = tmp;
+	return 1;
 }
 
-int TopNode(Node *head)
+int TopNode(Node* &head)
 {
-	if (IsEmptyNode(head) == SUCCESS)
+	if (IsEmptyNode(head))
 	{
-		return ERROR;
+		return 0;
 	}
 	else
 	{
@@ -34,20 +34,20 @@ int TopNode(Node *head)
 	}
 }
 
-int PopNode(Node **head)
+int PopNode(Node* &head)
 {
 	// проверка на Empty
-	if (IsEmptyNode(*head) == SUCCESS) {
+	if (IsEmptyNode(head)) {
 
-		return ERROR;
+		return 0;
 	}
 	else
 	{
 		Node *out;
 		int elem;
 
-		out = *head;
-		*head = (*head)->next;
+		out = head;
+		head = head->next;
 		elem = out->elem;
 		delete out;
 		return elem;
