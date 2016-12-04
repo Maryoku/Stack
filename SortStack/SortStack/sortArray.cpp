@@ -1,27 +1,26 @@
 #include "header.h"
 
-void JoinTwoStackInThird(ArrayStack * st1, ArrayStack * st2, ArrayStack * st3)
+void JoinTwoStackInThird(ArrayStack * st2, ArrayStack * st3, ArrayStack * st4)
 {
 	int elem;
-	while (!IsEmptyArray(st1) || !IsEmptyArray(st2))
+	while (!IsEmptyArray(st2) || !IsEmptyArray(st3))
 	{
-		if (!IsEmptyArray(st1) && !IsEmptyArray(st2))
+		if (!IsEmptyArray(st2) && !IsEmptyArray(st3))
 		{
-			if (TopArray(st1) >= TopArray(st2))
-				elem = PopArray(st1);
-			else elem = PopArray(st2);
+			if (TopArray(st2) >= TopArray(st3))
+				elem = PopArray(st2);
+			else elem = PopArray(st3);
 		}
-		else if (!IsEmptyArray(st1))
-			elem = PopArray(st1);
-		else elem = PopArray(st2);
+		else if (!IsEmptyArray(st2))
+			elem = PopArray(st2);
+		else elem = PopArray(st3);
 
-		PushArray(st3, elem);
+		PushArray(st4, elem);
 	}
 }
 
-void sortArray(ArrayStack * st1, bool MaxToTop)
+void sortArray(ArrayStack * st1)
 {
-	//создаем три таких же по емкости стека 
 	ArrayStack st2;
 	ArrayStack st3;
 	ArrayStack st4;
@@ -66,22 +65,9 @@ void sortArray(ArrayStack * st1, bool MaxToTop)
 
 	JoinTwoStackInThird(&st2, &st3, &st4);
 
-	if (MaxToTop)
-		while (!IsEmptyArray(&st4))
-		{
-			PushArray(st1, PopArray(&st4));
-		}
-	else
+	while (!IsEmptyArray(&st4))
 	{
-		while (!IsEmptyArray(&st4))
-		{
-			PushArray(&st2, PopArray(&st4));
-		}
-
-		while (!IsEmptyArray(&st2))
-		{
-			PushArray(st1, PopArray(&st2));
-		}
+		PushArray(st1, PopArray(&st4));
 	}
 
 }

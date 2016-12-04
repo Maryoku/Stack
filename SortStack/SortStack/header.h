@@ -14,10 +14,10 @@
 
 using namespace std;
 
-void JoinTwoStackInThird(ArrayStack * st1, ArrayStack * st2, ArrayStack * st3);
-void sortArray(ArrayStack * st1, bool MaxToTop = true);
+void JoinTwoStackInThird(ArrayStack * st2, ArrayStack * st3, ArrayStack * st4);
+void sortArray(ArrayStack * st1);
 
-void JoinTwoStackInThird(Node * &st1, Node * &st2, Node * &st3);
-void sortNode(Node * &st1, bool MaxToTop = true);
+void JoinTwoStackInThird(Node * &st2, Node * &st3, Node * &st4);
+void sortNode(Node * &st1);
 
 #endif

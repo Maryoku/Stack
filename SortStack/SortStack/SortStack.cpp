@@ -13,7 +13,7 @@ int main()
 
 	ifstream fileStream("data.txt");
 
-	for (int i = 0; i < 50000; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
 		int elem;
 		fileStream >> elem;
